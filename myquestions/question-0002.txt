@@ -1,0 +1,9 @@
+El Problema:
+Una app de cocina registra recetas con variables calorias, tiempo_prep_min, num_ingredientes. 
+Algunos usuarios no llenaron todos los campos. Quieres predecir si una receta es difícil o fácil (dificultad: 0 o 1).
+Tu Misión: Escribe una función llamada predecir_dificultad(df, target_col) que:
+Separe X e y usando target_col.
+Impute los NaN con la media usando SimpleImputer.
+Entrene un DecisionTreeClassifier(max_depth=3, random_state=42) con split 80/20.
+Use numpy para calcular cuántas predicciones fueron correctas e incorrectas.
+Retorne un dict con accuracy, correctas e incorrectas.
