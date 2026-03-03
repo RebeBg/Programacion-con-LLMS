@@ -1,0 +1,9 @@
+El Problema:
+En una fintech, cada transacción tiene monto, hora_del_dia y num_intentos. 
+Quieres marcar automáticamente si una transacción es anómala comparándola con el patrón general usando distancia estadística.
+Tu Misión: Escribe una función llamada marcar_anomalias(df, umbral) que:
+
+Escale las columnas numéricas con StandardScaler.
+Calcule con numpy la distancia euclidiana de cada fila al origen (= centroide tras escalar).
+Añada una columna anomalia = True si la distancia supera el umbral.
+Retorne el DataFrame con esa columna añadida."
