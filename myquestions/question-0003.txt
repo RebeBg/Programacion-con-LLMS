@@ -1,0 +1,9 @@
+El Problema:
+Una inmobiliaria rural tiene registros de fincas: hectareas, distancia_ciudad_km y num_construcciones. 
+Quieres predecir el precio y analizar el error de cada predicción individualmente para detectar cuáles estimaciones fueron las peores.
+Tu Misión: Escribe una función llamada evaluar_finca(df, target_col) que:
+
+Divida en train/test (75/25, random_state=7).
+Entrene un Ridge(alpha=1.0).
+Use numpy para calcular el error absoluto por muestra (|y_real - y_pred|) sobre el test set.
+Retorne un dict con r2, mae_promedio, mae_maximo y mae_minimo."
