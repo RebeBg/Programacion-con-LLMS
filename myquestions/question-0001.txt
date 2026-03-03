@@ -1,0 +1,8 @@
+El Problema:
+Una clínica veterinaria registra el peso, edad, temperatura corporal y frecuencia cardíaca de animales, junto con si necesitan cirugía urgente (urgente: 0 o 1). 
+Tu Misión: Escribe una función llamada clasificar_urgencia(df, target_col) que:
+
+-Escale las features con StandardScaler.
+-Entrene un LogisticRegression(max_iter=300) con split 80/20 (random_state=42).
+-Use numpy para obtener el array de errores: posiciones donde la predicción fue incorrecta.
+-Retorne un dict con accuracy, n_errores y indices_error (array numpy con las posiciones incorrectas en el test set).
