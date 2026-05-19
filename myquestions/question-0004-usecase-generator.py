@@ -34,12 +34,17 @@ def marcar_anomalias(df, umbral):
     
     return df_result
 
+
 # -------------------------------------------------------------
-# Generador de caso de uso aleatorio
+# Generador de caso de uso aleatorio (CORREGIDO)
 # -------------------------------------------------------------
 def generar_caso_de_uso_marcar_anomalias():
     """
     Genera un caso de prueba aleatorio (input/output) para marcar_anomalias.
+    
+    CORRECCIÓN: el output esperado ahora replica exactamente la lógica de
+    marcar_anomalias: primero selecciona columnas numéricas con select_dtypes
+    y luego escala solo esas columnas, igual que hace la función real.
     """
     # 1. Configuración aleatoria
     n_rows = random.randint(10, 25)
@@ -57,15 +62,20 @@ def generar_caso_de_uso_marcar_anomalias():
     # Input
     input_data = {'df': df.copy(), 'umbral': umbral}
     
-    # Calcular output esperado
+    # --- CORRECCIÓN ---
+    # Calcular output esperado replicando EXACTAMENTE la lógica de marcar_anomalias:
+    # 1) seleccionar columnas numéricas con select_dtypes (no asumir cuáles son)
+    # 2) escalar solo esas columnas (no el DataFrame completo)
+    cols_num = df.select_dtypes(include=np.number).columns.tolist()
     scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(df)
+    X_scaled = scaler.fit_transform(df[cols_num])          # <-- bug corregido aquí
     distancias = np.linalg.norm(X_scaled, axis=1)
     
     df_output = df.copy()
     df_output['anomalia'] = distancias > umbral
     
     return input_data, df_output
+
 
 # -------------------------------------------------------------
 # Ejemplo de ejecución
@@ -81,7 +91,11 @@ if __name__ == "__main__":
     print("\n=== OUTPUT ESPERADO (primeras 5 filas) ===")
     print(salida_esperada.head())
     
-    # Ejemplo de llamada a la función real
+    # Verificación: la función real debe coincidir exactamente con el esperado
     resultado = marcar_anomalias(**entrada)
     print("\n=== Resultado marcar_anomalias (primeras 5 filas) ===")
     print(resultado.head())
+    
+    # Comprobación de consistencia
+    coincide = resultado['anomalia'].equals(salida_esperada['anomalia'])
+    print(f"\n✓ ¿Generador y función coinciden? {coincide}")
