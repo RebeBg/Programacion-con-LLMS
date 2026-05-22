@@ -1,0 +1,17 @@
+answer-0033.py:
+El enunciado (question-0001.txt de Morales) describe una lógica basada en
+retorno porcentual diario y desviación estándar móvil. Sin embargo, el
+generador de casos de uso (líneas 20-29) implementa una lógica diferente:
+calcula la media móvil de 30 días y la desviación porcentual respecto a esa
+media, sin usar retornos diarios. Mi solución sigue la lógica del generador
+ya que es lo que el validador automático compara, y el resultado fue correcto.
+
+answer-0365.py:
+No fue posible desarrollar ni validar la solución para esta pregunta porque
+el repositorio del autor (https://github.com/mariangelurzola-cmyk/questionsLLMs)
+fue eliminado. Al intentar acceder tanto a la pregunta (question-0001.txt)
+como al generador de casos de uso (question-0001-usecase-generator.py),
+se obtiene un error HTTP 404. Según información del curso, el autor canceló
+la materia aproximadamente un mes antes de la entrega, lo que imposibilita
+completamente el acceso al enunciado y al generador necesario para desarrollar
+y validar la solución. 
